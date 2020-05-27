@@ -3,4 +3,4 @@ spring:
     name: room-services
   cloud:
     config:
-      uri: http://config:9000
+      uri: http://conf:DCRrdKUwq3293MLMBbFK@config:9000
