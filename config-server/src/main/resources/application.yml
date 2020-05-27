@@ -15,5 +15,5 @@ spring:
         config:
             server:
                 git:
-                    uri: git@github.com:justinpmliu/config-repo.git
+                    uri: https://github.com/justinpmliu/config-repo.git
 
