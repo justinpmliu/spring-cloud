@@ -1,11 +1,6 @@
-jasypt:
-  encryptor:
-    algorithm: PBEWITHSHA1ANDDESEDE
-    keyObtentionIterations: 10000
-
 spring:
   application:
     name: room-services
   cloud:
     config:
-      uri: http://conf:ENC(Nd7XL9yGI0wjpEyvWBeuoRnNRpgqtQce9RNOZ8M4OE0=)@config:9000
+      uri: http://${config_username}:${config_password}@config:9000

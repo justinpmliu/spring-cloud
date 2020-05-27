@@ -1,3 +1,8 @@
+jasypt:
+  encryptor:
+    algorithm: PBEWITHSHA1ANDDESEDE
+    keyObtentionIterations: 10000
+
 eureka:
   client:
     service-url:

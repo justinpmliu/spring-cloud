@@ -1,3 +1,8 @@
+jasypt:
+  encryptor:
+    algorithm: PBEWITHSHA1ANDDESEDE
+    keyObtentionIterations: 10000
+
 server:
   port: 9000
 
@@ -5,16 +10,10 @@ spring:
     security:
         user:
             name: conf
-            password: ENC(Nd7XL9yGI0wjpEyvWBeuoRnNRpgqtQce9RNOZ8M4OE0=)
+            password: ENC(5FnO1fhjCAGneCBVYLaBXEamFJgqKrWD)
     cloud:
         config:
             server:
                 git:
-                    uri: git@github.com:justinpmliu/spring-cloud.git
-                    search-paths:
-                    - config
+                    uri: git@github.com:justinpmliu/config-repo.git
 
-jasypt:
-  encryptor:
-    algorithm: PBEWITHSHA1ANDDESEDE
-    keyObtentionIterations: 10000
