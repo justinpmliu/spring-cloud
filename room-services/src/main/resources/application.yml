@@ -5,4 +5,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:DCRrdKUwq3293MLMBbFK@eureka1:8761/eureka/, http://eureka:DCRrdKUwq3293MLMBbFK@eureka2:8762/eureka/
+      defaultZone: http://${eureka_username}:${eureka_password}@eureka1:8761/eureka/,http://${eureka_username}:${eureka_password}@eureka2:8762/eureka/

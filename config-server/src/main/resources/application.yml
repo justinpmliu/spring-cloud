@@ -2,14 +2,19 @@ server:
   port: 9000
 
 spring:
-  security:
-    user:
-      name: conf
-      password: DCRrdKUwq3293MLMBbFK
-  cloud:
-    config:
-      server:
-        git:
-          uri: git@github.com:justinpmliu/spring-cloud.git
-          search-paths:
-            - config
+    security:
+        user:
+            name: conf
+            password: ENC(Nd7XL9yGI0wjpEyvWBeuoRnNRpgqtQce9RNOZ8M4OE0=)
+    cloud:
+        config:
+            server:
+                git:
+                    uri: git@github.com:justinpmliu/spring-cloud.git
+                    search-paths:
+                    - config
+
+jasypt:
+  encryptor:
+    algorithm: PBEWITHSHA1ANDDESEDE
+    keyObtentionIterations: 10000

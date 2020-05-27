@@ -1,6 +1,11 @@
+jasypt:
+  encryptor:
+    algorithm: PBEWITHSHA1ANDDESEDE
+    keyObtentionIterations: 10000
+
 spring:
   application:
     name: reservation-business-services
   cloud:
     config:
-      uri: http://conf:DCRrdKUwq3293MLMBbFK@config:9000
+      uri: http://conf:ENC(Nd7XL9yGI0wjpEyvWBeuoRnNRpgqtQce9RNOZ8M4OE0=)@config:9000
