@@ -13,6 +13,8 @@ server:
     key-alias: spring_cloud_demo
 
 spring:
+  application:
+    name: config-server
   security:
     user:
       name: conf
@@ -21,7 +23,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/justinpmliu/config-repo.git
+          uri: git@github.com:justinpmliu/config-repo.git
 eureka:
   instance:
     secure-port-enabled: true
