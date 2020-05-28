@@ -12,7 +12,7 @@ spring:
 eureka:
   instance:
     secure-port-enabled: true
-    hostname: myhost
+    hostname: ${host_name}
   client:
     service-url:
       defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/, https://eureka:${eureka_password}@eureka2:8762/eureka/
