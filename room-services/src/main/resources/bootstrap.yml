@@ -3,9 +3,16 @@ spring:
     name: room-services
   cloud:
     config:
-      uri: https://conf:${config_password}@myhost:9000
+      discovery:
+        enabled: true
+        service-id: config-server
+      username: conf
+      password: ${config_password}
 
 eureka:
+  instance:
+    secure-port-enabled: true
+    hostname: myhost
   client:
     service-url:
-      defaultZone: https://eureka:${eureka_password}@myhost:8761/eureka/
+      defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/, https://eureka:${eureka_password}@eureka2:8762/eureka/

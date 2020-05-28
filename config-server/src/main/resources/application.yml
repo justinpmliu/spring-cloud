@@ -23,6 +23,9 @@ spring:
         git:
           uri: https://github.com/justinpmliu/config-repo.git
 eureka:
+  instance:
+    secure-port-enabled: true
+    hostname: config
   client:
     service-url:
-      defaultZone: https://eureka:${eureka_password}@myhost:8761/eureka/
+      defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/, https://eureka:${eureka_password}@eureka2:8762/eureka/

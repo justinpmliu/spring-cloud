@@ -22,7 +22,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: https://eureka:${eureka_password}@myhost:8761/eureka/
+      defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/, https://eureka:${eureka_password}@eureka2:8762/eureka/
   instance:
     appname: SERVICE-REGISTRY-CLUSTER
 
@@ -34,6 +34,7 @@ server:
 eureka:
   instance:
     hostname: eureka1
+    secure-port-enabled: true
 
 ---
 spring:
@@ -43,3 +44,4 @@ server:
 eureka:
   instance:
     hostname: eureka2
+    secure-port-enabled: true
