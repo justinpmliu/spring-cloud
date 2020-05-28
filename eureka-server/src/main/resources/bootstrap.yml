@@ -1,0 +1,6 @@
+jasypt:
+  encryptor:
+    algorithm: PBEWITHSHA1ANDDESEDE
+    keyObtentionIterations: 10000
+
+eureka_password: ENC(T8MKR0mkDQsx4ekUSoPBk2f0ALOmDzzKMYLtI5qNCVA=)
