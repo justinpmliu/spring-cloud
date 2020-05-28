@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: eureka-server
-  cloud:
-    config:
-      uri: http://${config_username}:${config_password}@config:9000

@@ -2,10 +2,8 @@ jasypt:
   encryptor:
     algorithm: PBEWITHSHA1ANDDESEDE
     keyObtentionIterations: 10000
-
 server:
   port: 9000
-
 spring:
     security:
         user:
@@ -16,4 +14,7 @@ spring:
             server:
                 git:
                     uri: https://github.com/justinpmliu/config-repo.git
-
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:${eureka_password}@eureka1:8761/eureka/,http://eureka:${eureka_password}@eureka2:8762/eureka/

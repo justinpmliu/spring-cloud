@@ -2,8 +2,3 @@ jasypt:
   encryptor:
     algorithm: PBEWITHSHA1ANDDESEDE
     keyObtentionIterations: 10000
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://${eureka_username}:${eureka_password}@eureka1:8761/eureka/,http://${eureka_username}:${eureka_password}@eureka2:8762/eureka/
