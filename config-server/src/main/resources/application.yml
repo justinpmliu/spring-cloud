@@ -23,7 +23,7 @@ spring:
     config:
       server:
         git:
-          uri: /home/justin/git/config-repo
+          uri: git@github.com:justinpmliu/config-repo.git
 eureka:
   instance:
     secure-port-enabled: true
