@@ -2,19 +2,27 @@ jasypt:
   encryptor:
     algorithm: PBEWITHSHA1ANDDESEDE
     keyObtentionIterations: 10000
+
 server:
   port: 9000
+  ssl:
+    enabled: true
+    key-store: /home/justin/ssl/spring_cloud_demo.jks
+    key-store-password: ENC(C9S/riFqH1Xm8GRSqZws7REooMNN1Tr9RvYY3vHBWf0=)
+    key-store-type: JKS
+    key-alias: spring_cloud_demo
+
 spring:
-    security:
-        user:
-            name: conf
-            password: ENC(5FnO1fhjCAGneCBVYLaBXEamFJgqKrWD)
-    cloud:
-        config:
-            server:
-                git:
-                    uri: https://github.com/justinpmliu/config-repo.git
+  security:
+    user:
+      name: conf
+      password: ENC(5FnO1fhjCAGneCBVYLaBXEamFJgqKrWD)
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/justinpmliu/config-repo.git
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:${eureka_password}@eureka1:8761/eureka/,http://eureka:${eureka_password}@eureka2:8762/eureka/
+      defaultZone: https://eureka:${eureka_password}@myhost:8761/eureka/

@@ -3,40 +3,43 @@ jasypt:
     algorithm: PBEWITHSHA1ANDDESEDE
     keyObtentionIterations: 10000
 
----
+server:
+  ssl:
+    enabled: true
+    key-store: /home/justin/ssl/spring_cloud_demo.jks
+    key-store-password: ENC(C9S/riFqH1Xm8GRSqZws7REooMNN1Tr9RvYY3vHBWf0=)
+    key-store-type: JKS
+    key-alias: spring_cloud_demo
+
 spring:
-  profiles: eureka1
   security:
     user:
       name: eureka
       password: ${eureka_password}
-server:
-  port: 8761
+
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://eureka:${eureka_password}@eureka1:8761/eureka/,http://eureka:${eureka_password}@eureka2:8762/eureka/
+      defaultZone: https://eureka:${eureka_password}@myhost:8761/eureka/
   instance:
-    hostname: eureka1
     appname: SERVICE-REGISTRY-CLUSTER
 
 ---
 spring:
+  profiles: eureka1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: eureka1
+
+---
+spring:
   profiles: eureka2
-  security:
-    user:
-      name: eureka
-      password: ${eureka_password}
 server:
   port: 8762
 eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://eureka:${eureka_password}@eureka1:8761/eureka/,http://eureka:${eureka_password}@eureka2:8762/eureka/
   instance:
     hostname: eureka2
-    appname: SERVICE-REGISTRY-CLUSTER
