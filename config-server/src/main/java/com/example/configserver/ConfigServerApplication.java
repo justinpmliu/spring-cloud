@@ -30,6 +30,7 @@ public class ConfigServerApplication {
         protected void configure(HttpSecurity http) throws Exception {
             http.csrf().ignoringAntMatchers("/eureka/**");
 
+/*
             String[] permittedEndpoints = Stream.of(
                     managementEndpointsInclude.stream().map(e -> "/actuator/" + e))
                     .flatMap(Function.identity())
@@ -38,6 +39,7 @@ public class ConfigServerApplication {
             http.authorizeRequests()
                     .antMatchers(permittedEndpoints)
                     .permitAll();
+*/
 
             super.configure(http);
         }

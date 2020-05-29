@@ -41,6 +41,7 @@ public class EurekaServerApplication {
         protected void configure(HttpSecurity http) throws Exception {
             http.csrf().ignoringAntMatchers("/eureka/**");
 
+/*
             String[] permittedEndpoints = Stream.of(
                     Stream.of(EUREKA_PUBLIC_ENDPOINTS),
                     managementEndpointsInclude.stream().map(e -> "/actuator/" + e))
@@ -50,6 +51,7 @@ public class EurekaServerApplication {
             http.authorizeRequests()
                     .antMatchers(permittedEndpoints)
                     .permitAll();
+*/
 
             super.configure(http);
         }
