@@ -21,6 +21,11 @@ eureka:
   instance:
     appname: SERVICE-REGISTRY-CLUSTER
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,prometheus
 ---
 spring:
   profiles: eureka1

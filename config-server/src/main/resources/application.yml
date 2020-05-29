@@ -31,3 +31,9 @@ eureka:
   client:
     service-url:
       defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/, https://eureka:${eureka_password}@eureka2:8762/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,prometheus
