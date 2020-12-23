@@ -1,4 +1,4 @@
-package com.example.reservationbusinessservices;
+package com.example.reservationbusinessservices.controller;
 
 import com.example.reservationbusinessservices.client.RoomService;
 import com.example.reservationbusinessservices.domain.Room;

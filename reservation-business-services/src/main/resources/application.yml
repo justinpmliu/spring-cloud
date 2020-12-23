@@ -10,3 +10,7 @@ server:
     key-store-password: ENC(C9S/riFqH1Xm8GRSqZws7REooMNN1Tr9RvYY3vHBWf0=)
     key-store-type: JKS
     key-alias: spring_cloud_demo
+
+feign:
+  hystrix:
+    enabled: true
