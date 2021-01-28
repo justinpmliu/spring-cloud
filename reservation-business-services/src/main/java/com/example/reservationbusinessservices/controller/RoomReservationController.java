@@ -24,8 +24,7 @@ public class RoomReservationController {
     public List<Room> getAllRooms(@RequestParam(name="roomNumber", required = false)String roomNumber) {
         List<Room> rooms = roomService.findAll(roomNumber);
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixIn(Room.class, RoomMixin.class);
+        ObjectMapper mapper = this.createMapper(Room.class, RoomMixin.class);
 
         try {
             String json = mapper.writeValueAsString(rooms);
@@ -35,5 +34,11 @@ public class RoomReservationController {
         }
 
         return rooms;
+    }
+
+    private ObjectMapper createMapper(Class<?> target, Class<?> mixinSource) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixIn(target, mixinSource);
+        return mapper;
     }
 }
