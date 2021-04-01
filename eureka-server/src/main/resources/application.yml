@@ -30,7 +30,7 @@ management:
         include: info,health,prometheus
 
 ssl:
-  bypassHostVerification: true
+  bypass-host-verification: true
 ---
 spring:
   profiles: eureka1

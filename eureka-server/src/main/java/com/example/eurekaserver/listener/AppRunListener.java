@@ -10,7 +10,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @Slf4j
 public class AppRunListener implements SpringApplicationRunListener {
 
-    private static final String SSL_BYPASS_HOST_VERIFICATION = "ssl.bypassHostVerification";
+    private static final String SSL_BYPASS_HOST_VERIFICATION = "ssl.bypass-host-verification";
     private static boolean isBypass = true;
     private SpringApplication application;
 
