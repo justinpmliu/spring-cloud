@@ -15,15 +15,22 @@ spring:
       password: ${eureka_password}
 
 eureka:
+  instance:
+    secure-port-enabled: true
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/,https://eureka:${eureka_password}@eureka2:8762/eureka/
 
 management:
   endpoints:
     web:
       exposure:
         include: info,health,prometheus
+
+ssl:
+  bypassHostVerification: true
 ---
 spring:
   profiles: eureka1
@@ -32,10 +39,6 @@ server:
 eureka:
   instance:
     hostname: eureka1
-    secure-port-enabled: true
-  client:
-    service-url:
-      defaultZone: https://eureka:${eureka_password}@eureka2:8762/eureka/
 
 ---
 spring:
@@ -45,7 +48,3 @@ server:
 eureka:
   instance:
     hostname: eureka2
-    secure-port-enabled: true
-  client:
-    service-url:
-      defaultZone: https://eureka:${eureka_password}@eureka1:8761/eureka/
