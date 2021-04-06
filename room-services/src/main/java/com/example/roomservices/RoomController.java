@@ -2,28 +2,29 @@ package com.example.roomservices;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by frankmoley on 5/22/17.
  */
 @RestController
-@RequestMapping(value="/rooms")
 @Api(value="rooms", tags=("room"))
+@Slf4j
 public class RoomController {
     @Autowired
     private RoomRepository roomRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/rooms")
     @ApiOperation(value = "Get all rooms", notes = "Get all rooms in the system", nickname = "getRooms")
     public ResponseEntity<List<Room>> findAll(@RequestParam(name="roomNumber", required = false)String roomNumber){
         List<Room> rooms;
@@ -35,4 +36,23 @@ public class RoomController {
         }
         return ResponseEntity.ok(rooms);
     }
+
+    @GetMapping("/sleep1")
+    public String sleep(Integer timeout){
+        try{
+            log.info("begin sleep:{}",timeout);
+            TimeUnit.SECONDS.sleep(timeout);
+            log.info("end sleep:{}",timeout);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return "sleep:" + timeout;
+    }
+
+    @GetMapping("/sleep2")
+    public String sleep(){
+        new Thread(new MyTask()).start();
+        return "start sleep 30s";
+    }
+
 }
