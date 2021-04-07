@@ -1,5 +1,6 @@
 package com.example.roomservices;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -22,6 +23,9 @@ import java.util.Collections;
 @EnableDiscoveryClient
 public class RoomServicesApplication {
 
+    @Value("${spring.lifecycle.timeout-per-shutdown-phase:null}")
+    private String shutdownTimeout;
+
     @Bean
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2).groupName("Room").select()
@@ -36,8 +40,10 @@ public class RoomServicesApplication {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
         taskExecutor.setCorePoolSize(4);
         taskExecutor.setMaxPoolSize(4);
-        taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
-        taskExecutor.setAwaitTerminationSeconds(20);
+        if (!"null".equals(shutdownTimeout)) {
+            taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+            taskExecutor.setAwaitTerminationSeconds(Integer.parseInt(shutdownTimeout.substring(0, shutdownTimeout.length() - 1)));
+        }
         return taskExecutor;
     }
 
