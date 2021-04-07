@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,9 @@ public class RoomController {
     @Autowired
     private RoomRepository roomRepository;
 
+    @Autowired
+    private ThreadPoolTaskExecutor taskExecutor;
+
     @GetMapping("/rooms")
     @ApiOperation(value = "Get all rooms", notes = "Get all rooms in the system", nickname = "getRooms")
     public ResponseEntity<List<Room>> findAll(@RequestParam(name="roomNumber", required = false)String roomNumber){
@@ -38,7 +42,7 @@ public class RoomController {
     }
 
     @GetMapping("/sleep1")
-    public String sleep(Integer timeout){
+    public String sleep1(Integer timeout){
         try{
             log.info("begin sleep:{}",timeout);
             TimeUnit.SECONDS.sleep(timeout);
@@ -50,9 +54,23 @@ public class RoomController {
     }
 
     @GetMapping("/sleep2")
-    public String sleep(){
+    public String sleep2(){
         new Thread(new MyTask()).start();
         return "start sleep 30s";
+    }
+
+    @GetMapping("/sleep3")
+    public String sleep3(Integer timeout){
+        taskExecutor.execute(() -> {
+            try {
+                log.info("begin sleep:{}", timeout);
+                TimeUnit.SECONDS.sleep(timeout);
+                log.info("end sleep:{}",timeout);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        return "start sleep:" + timeout;
     }
 
 }
